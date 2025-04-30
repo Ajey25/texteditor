@@ -108,7 +108,7 @@ const TextEditor = () => {
                   background: "white",
                   border: "1px solid #ccc",
                   borderRadius: "4px",
-                  padding: "8px",
+                  padding: "4px",
                   boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
                   display: "flex",
                   gap: "10px",
