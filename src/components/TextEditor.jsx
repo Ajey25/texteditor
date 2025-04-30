@@ -126,7 +126,7 @@ const TextEditor = () => {
                   <div
                     style={{
                       display: "flex",
-                      gap: "3px",
+                      gap: "0px",
                       borderBottom: "1px solid #ccc",
                     }}
                   >
