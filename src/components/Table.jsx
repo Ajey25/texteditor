@@ -54,7 +54,7 @@ const TableInsert = ({ editorRef }) => {
   return (
     <div style={{ position: "relative" }} ref={gridRef}>
       <button onClick={() => setShowGrid((prev) => !prev)} title="Insert Table">
-        <LiaTableSolid style={{ marginTop: "4px" }} />{" "}
+        <LiaTableSolid size={25} style={{ marginTop: "3px" }} />{" "}
       </button>
 
       {showGrid && (
