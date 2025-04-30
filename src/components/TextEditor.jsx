@@ -110,7 +110,6 @@ const TextEditor = () => {
                   borderRadius: "4px",
                   boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
                   display: "flex",
-                  gap: "5px",
                   zIndex: 1000,
                 }}
               >
