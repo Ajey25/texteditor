@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaStrikethrough } from "react-icons/fa";
+import { HiStrikethrough } from "react-icons/hi2";
 
 const StrikeThrough = ({ editorRef }) => {
   const [isActive, setIsActive] = useState(false);
@@ -38,7 +38,7 @@ const StrikeThrough = ({ editorRef }) => {
         justifyContent: "center", // Horizontal alignment
       }}
     >
-      <FaStrikethrough size={20} /> {/* Font Awesome strikethrough icon */}
+      <HiStrikethrough />{" "}
     </button>
   );
 };

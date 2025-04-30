@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaBold } from "react-icons/fa";
+import { HiBold } from "react-icons/hi2";
 
 const Bold = ({ editorRef }) => {
   const [isActive, setIsActive] = useState(false);
@@ -33,7 +33,7 @@ const Bold = ({ editorRef }) => {
       title="Bold"
       className={isActive ? "active-btn" : ""}
     >
-      <FaBold />
+      <HiBold />
     </button>
   );
 };

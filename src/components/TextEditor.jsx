@@ -1,4 +1,3 @@
-// TextEditor.jsx
 import React, { useRef, useState, useEffect } from "react";
 import Bold from "./Bold";
 import Italic from "./Italic";
@@ -11,11 +10,18 @@ import FontFamily from "./FontFamily";
 import OrderedList from "./OrderedList";
 import UnorderedList from "./UnorderedList";
 import Highlighter from "./Highlighter";
-import AlignText from "./AlignText";
-import { FaEllipsisV } from "react-icons/fa";
+import { HiEllipsisVertical } from "react-icons/hi2";
+import Paragraph from "./Paragraph";
+import Table from "./Table"; // Import the Table component
+import AlignCenter from "./AlignCenter";
+import AlignLeft from "./AlignLeft";
+import AlignRight from "./AlignRight";
+import Link from "./Link";
+import Blockquote from "./Blockquote"; // Import the Blockquote component
 
 const TextEditor = () => {
   const editorRef = useRef(null);
+  const [editorContent, setEditorContent] = useState("");
   const [showMore, setShowMore] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -26,37 +32,60 @@ const TextEditor = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  useEffect(() => {
+    // Load saved content on mount
+    const savedContent = localStorage.getItem("editorContent");
+    if (savedContent) {
+      editorRef.current.innerHTML = savedContent;
+      setEditorContent(savedContent);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save every time content changes
+    localStorage.setItem("editorContent", editorContent);
+    console.log("Saved to localStorage:", editorContent);
+  }, [editorContent]);
+
   return (
-    <div className="editor-wrapper" style={{ padding: "10px" }}>
+    <div className="editor-wrapper" style={{ padding: "0px" }}>
       <div
         className="toolbar"
         style={{
           display: "flex",
           flexWrap: "wrap",
           alignItems: "center",
-          gap: "8px",
           position: "relative",
+          padding: "0px 8px",
         }}
       >
         <Bold editorRef={editorRef} />
         <Italic editorRef={editorRef} />
         <Underline editorRef={editorRef} />
         <StrikeThrough editorRef={editorRef} />
-        <Highlighter editorRef={editorRef} />
+        <hr />
+        <Paragraph editorRef={editorRef} />
+        {/* <Highlighter editorRef={editorRef} /> */}{" "}
+        <Link editorRef={editorRef} />
         <FontColor editorRef={editorRef} />
+        <hr />
         <OrderedList editorRef={editorRef} />
         <UnorderedList editorRef={editorRef} />
-        <AlignText editorRef={editorRef} />
-
         {/* Desktop only */}
         {!isMobileView && (
           <>
+            <Table editorRef={editorRef} />
+            <Blockquote editorRef={editorRef} />
+            <hr />
+            <AlignLeft editorRef={editorRef} />
+            <AlignCenter editorRef={editorRef} />
+            <AlignRight editorRef={editorRef} />
+            <hr />
             <Heading editorRef={editorRef} />
             <FontSize editorRef={editorRef} />
             <FontFamily editorRef={editorRef} />
           </>
         )}
-
         {/* Mobile triple dot menu */}
         {isMobileView && (
           <div style={{ position: "relative" }}>
@@ -64,14 +93,10 @@ const TextEditor = () => {
               onClick={() => setShowMore((prev) => !prev)}
               style={{
                 background: "none",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-                padding: "4px 6px",
-                fontSize: "18px",
                 cursor: "pointer",
               }}
             >
-              <FaEllipsisV />
+              <HiEllipsisVertical size={20} />
             </button>
 
             {showMore && (
@@ -79,7 +104,7 @@ const TextEditor = () => {
                 style={{
                   position: "absolute",
                   top: "110%",
-                  left: 0,
+                  left: -250,
                   background: "white",
                   border: "1px solid #ccc",
                   borderRadius: "4px",
@@ -90,9 +115,36 @@ const TextEditor = () => {
                   zIndex: 1000,
                 }}
               >
-                <Heading editorRef={editorRef} />
-                <FontSize editorRef={editorRef} />
-                <FontFamily editorRef={editorRef} />
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(1, 1fr)",
+                    flexDirection: "column",
+                    gap: "0px",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "5px",
+                      borderBottom: "1px solid #ccc",
+                    }}
+                  >
+                    <Table editorRef={editorRef} />
+                    <Link editorRef={editorRef} />
+                    <Blockquote editorRef={editorRef} />
+                    <hr />
+                    <AlignLeft editorRef={editorRef} />
+                    <AlignCenter editorRef={editorRef} />
+                    <AlignRight editorRef={editorRef} />
+                    <hr />
+                    <Heading editorRef={editorRef} />
+                  </div>
+                  <div style={{ display: "flex", gap: "0px" }}>
+                    <FontSize editorRef={editorRef} />
+                    <FontFamily editorRef={editorRef} />
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -104,14 +156,28 @@ const TextEditor = () => {
         contentEditable
         className="editor-area"
         suppressContentEditableWarning={true}
+        onInput={() => setEditorContent(editorRef.current.innerHTML)}
         style={{
-          marginTop: "20px",
           minHeight: "200px",
           border: "1px solid #ccc",
           padding: "10px",
           borderRadius: "6px",
         }}
       ></div>
+      <div style={{ marginTop: "20px" }}>
+        <h4>🧾 Raw Saved HTML:</h4>
+        <pre
+          style={{
+            background: "#f4f4f4",
+            padding: "10px",
+            borderRadius: "4px",
+            whiteSpace: "pre-wrap",
+            wordWrap: "break-word",
+          }}
+        >
+          {editorContent}
+        </pre>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaUnderline } from "react-icons/fa";
+import { HiUnderline } from "react-icons/hi2";
 
 const Underline = ({ editorRef }) => {
   const [isActive, setIsActive] = useState(false);
@@ -38,7 +38,7 @@ const Underline = ({ editorRef }) => {
         justifyContent: "center", // Horizontal alignment
       }}
     >
-      <FaUnderline size={20} /> {/* Font Awesome underline icon */}
+      <HiUnderline />{" "}
     </button>
   );
 };

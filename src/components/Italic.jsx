@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaItalic } from "react-icons/fa";
+import { HiItalic } from "react-icons/hi2";
 
 const Italic = ({ editorRef }) => {
   const [isActive, setIsActive] = useState(false);
@@ -32,7 +32,7 @@ const Italic = ({ editorRef }) => {
       title="Italic"
       className={isActive ? "active-btn" : ""}
     >
-      <FaItalic />
+      <HiItalic />{" "}
     </button>
   );
 };

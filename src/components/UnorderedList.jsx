@@ -35,7 +35,7 @@ const UnorderedList = ({ editorRef }) => {
         justifyContent: "center", // Horizontal alignment
       }}
     >
-      <RiListUnordered size={20} /> {/* Font Awesome unordered list icon */}
+      <RiListUnordered /> {/* Font Awesome unordered list icon */}
     </button>
   );
 };

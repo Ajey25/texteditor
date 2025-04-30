@@ -12,27 +12,30 @@
   min-height: 300px;
   padding: 15px;
   font-size: 18px;
+  height: 400px;
   min-width: 300px;
   line-height: 1.5;
   outline: none;
   text-align: left;
+  overflow: auto;
 }
 
 /* Styles for the toolbar */
 .toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.2rem;
   align-items: center;
   background: #fff;
-  border: black 1px solid;
+  border: #aaa 1px solid;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   padding: 0.5rem;
 }
 
 /* Styling for the horizontal divider inside toolbar */
-.toolbar hr {
-  border: 1px solid #aaa; /* Light gray color */
+hr {
+  height: 25px;
+  border: 1px solid #333; /* Light gray color */
   margin: 5px 0; /* Add space above and below the line */
   opacity: 0.5; /* Makes the line more subtle */
 }
@@ -43,7 +46,7 @@ button {
   border: none;
   cursor: pointer;
   font-size: 1.2rem; /* Use rem for better scaling */
-  padding: 8px;
+  padding: 0.4rem;
   border-radius: 6px;
   transition: background 0.3s;
 }
@@ -53,8 +56,7 @@ button:hover {
 }
 
 button.active-btn {
-  background-color: #d0d0d0;
-  color: #000;
+  color: rgb(84, 84, 223);
 }
 
 /* Styling for the select element */
@@ -88,7 +90,7 @@ select:focus {
   .toolbar button,
   .toolbar .icon-btn {
     font-size: 1rem !important; /* Smaller font size */
-    padding: 6px !important; /* Smaller padding */
+    padding: 5px !important; /* Smaller padding */
   }
 
   /* Resize the editor area font for better mobile readability */
@@ -143,4 +145,19 @@ select:focus {
   .toolbar .ellipsis-btn {
     display: none; /* Remove ellipsis menu on desktop */
   }
+}
+table:hover {
+  outline: 2px dashed #f00;
+  cursor: pointer;
+}
+.delete-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: none;
+  cursor: pointer;
+}
+
+table {
+  position: relative; /* So we can position the trash icon inside the table */
 }

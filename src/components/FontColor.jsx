@@ -20,8 +20,8 @@ const FontColor = ({ editorRef }) => {
         title="Font Color"
         className="btn btn-light p-0" // Bootstrap button styles
         style={{
-          width: "40px",
-          height: "40px",
+          width: "35px",
+          height: "35px",
           border: "none",
           padding: "0",
           cursor: "pointer",

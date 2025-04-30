@@ -33,7 +33,7 @@ const OrderedList = ({ editorRef }) => {
         borderColor: isActive ? "#ccc" : "#ccc",
       }}
     >
-      <RiListOrdered size={20} />
+      <RiListOrdered />
     </button>
   );
 };
