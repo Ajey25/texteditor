@@ -92,7 +92,7 @@ select:focus {
   .toolbar button,
   .toolbar .icon-btn {
     font-size: 1rem !important; /* Smaller font size */
-    padding: 5px !important; /* Smaller padding */
+    padding: 4px !important; /* Smaller padding */
   }
 
   /* Resize the editor area font for better mobile readability */
